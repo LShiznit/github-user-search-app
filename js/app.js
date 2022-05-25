@@ -9,18 +9,28 @@ const searchEntry = document.getElementById('search-entry')
 const searchSubmit1 = document.getElementById('search-icon')
 const searchSubmit2 = document.getElementById('search-submit')
 
-console.log(typeof searchSubmit)
+searchSubmit1.addEventListener('click', (e) => passSearchTerm())
+searchSubmit2.addEventListener('click', (e) => passSearchTerm())
+searchEntry.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    passSearchTerm()
+  }
+})
 
-searchSubmit1.addEventListener('click', (e) => {
+// # *** --- GIVE NO RESULT --- *** #
+function passSearchTerm() {
   const userEntry = searchEntry.value
-  console.log(userEntry)
 
   github.getUser(userEntry).then((res) => {
-    console.log(res.userProfile)
     if (res.userProfile.message == 'Not Found') {
-      console.log(res.userProfile.message)
+      // SHOW NO RESULT FOR 3 SECONDS
+      document.getElementById('searchDisplay').style.display = 'block'
+      setTimeout(function () {
+        document.getElementById('searchDisplay').style.display = 'none'
+      }, 3000)
     } else {
-      console.log(res.userProfile)
+      // SHOW USER INFO
+      ui.showProfile(res.userProfile)
     }
   })
-})
+}

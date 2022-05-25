@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
       <header>
         <div class="flex-container">
           <div class="logo"><h1>devfinder</h1></div>
-          <div class="toggle-theme active">DARK</div>
+          <div id="toggle-theme" class="toggle-theme active">DARK</div>
         </div>
       </header>
       <nav>
@@ -39,6 +39,7 @@
             type="search"
             placeholder="Search GitHub username..."
           />
+          <div id="searchDisplay">No Result</div>
           <input id="search-submit" type="button" value="Search" />
         </div>
       </nav>
@@ -89,6 +90,7 @@
     <script type="module">
       import { Octokit } from 'https://cdn.skypack.dev/@octokit/rest'
     </script>
+    <script src="./js/darkmode.js"></script>
     <script src="./js/github.js"></script>
     <script src="./js/ui.js"></script>
     <script src="./js/app.js"></script>

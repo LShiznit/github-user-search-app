@@ -1,10 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
-:root {
-  /* #### LIGHT MODE COLORS ### */
+/* #### DARK MODE COLORS ### */
+:root:not(.light) {
+  --bg-page: #141d2f;
+  --bg-card: #1e2a47;
+
+  --primary-col: #0079ff;
+  --secondary-font: #ffffff;
+  --shadow-color: #697c9a;
+}
+:root:not(.light) .toggle-theme::after {
+  filter: brightness(0) invert(1);
+}
+:root:not(.light) .active.toggle-theme::after {
+  filter: brightness(0) invert(1);
+}
+:root:not(.light) .profile-links *::before {
+  filter: brightness(0) invert(1);
+}
+:root:not(.light) .active.toggle-theme:hover {
+  filter: invert(9%) sepia(24%) saturate(1467%) hue-rotate(180deg)
+    brightness(91%) contrast(93%);
+}
+:root:not(.light) .card {
+  box-shadow: none;
+}
+:root:not(.light) #search-entry {
+  background-color: var(--bg-card);
+  color: var(--secondary-font);
+}
+:root:not(.light) #search-entry::placeholder {
+  filter: brightness(190%);
+}
+
+:root:not(.light) #search-submit {
+  color: var(--secondary-font);
+}
+:root:not(.light) #search-submit:hover {
+  filter: brightness(140%);
+  opacity: unset;
+}
+:root:not(.light) a:hover {
+  text-decoration-color: var(--secondary-font);
+}
+/* #### LIGHT MODE COLORS ### */
+:root.light {
   --bg-page: #f6f8ff;
   --bg-card: #fefefe;
-
   --primary-col: #0079ff;
   --secondary-font: #4b6a9b;
   --shadow-color: #697c9a;
@@ -35,12 +77,10 @@ body {
 h1 {
   font-weight: 700;
   font-size: 1.5rem;
-  color: black;
 }
 h2 {
   font-weight: 700;
   font-size: 1.25rem;
-  color: black;
 }
 h3 {
   color: var(--primary-col);
@@ -49,6 +89,13 @@ h3 {
 h4 {
   color: var(--secondary-font);
   font-size: 0.75rem;
+}
+a {
+  text-decoration: none;
+  outline: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 .container {
   width: 730px;
@@ -63,6 +110,8 @@ header .flex-container {
   width: 78px;
   height: 22px;
   position: relative;
+  text-align: right;
+  padding-right: 4.7rem;
 }
 .toggle-theme::after {
   content: '';
@@ -107,6 +156,19 @@ nav .flex-container {
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  position: relative;
+}
+#searchDisplay {
+  content: 'No results';
+  color: red;
+  width: 120px;
+  height: 50px;
+  right: 95px;
+  top: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  display: none;
 }
 nav input {
   height: 50px;
@@ -131,6 +193,7 @@ nav input {
   font-size: 1rem;
   font-family: 'Space Mono', monospace;
   margin: 0.5rem;
+  /* position: relative; */
 }
 #search-entry:focus {
   outline: none;
@@ -182,6 +245,7 @@ main .grid-container {
 }
 .grid-container .profile-about {
   grid-area: 2 / 2 / 3 / 4;
+  font-size: 0.9rem;
 }
 .grid-container .profile-metrics {
   grid-area: 3 / 2 / 4 / 4;
@@ -212,9 +276,7 @@ main .grid-container {
   padding-left: 1.5rem;
   position: relative;
 }
-.profile-links.grid-container > div > a {
-  text-decoration: none;
-}
+
 .profile-links .link-location {
   grid-area: 1 / 1 / 2 / 2;
 }
