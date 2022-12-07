@@ -29,10 +29,9 @@
   background-color: var(--bg-card);
   color: var(--secondary-font);
 }
-:root:not(.light) #search-entry::placeholder {
+/* :root:not(.light) #search-entry::placeholder {
   filter: brightness(190%);
-}
-
+} */
 :root:not(.light) #search-submit {
   color: var(--secondary-font);
 }
